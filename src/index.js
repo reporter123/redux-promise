@@ -12,7 +12,13 @@ export default function promiseMiddleware({ dispatch }) {
         .then(result => dispatch({ ...action, payload: result }))
         .catch(error => {
           dispatch({ ...action, payload: error, error: true });
-          return Promise.reject(error);
+
+          const jqueryMajorVersion = window.jQuery?.fn?.jquery.split('.');
+          //jQuery 3 Defered objects are A+ complinent previous versions did not handle throw properly.
+          if(jqueryMajorVersion !== undefined && jqueryMajorVersion < 3)
+            return Promise.reject(error);
+
+          throw error;
         })
       : next(action);
   };
