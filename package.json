@@ -58,11 +58,7 @@
       "unicorn-camelcase"
     ],
     "rules": {
-      "capitalized-comments": "off",
-      "object-curly-spacing": "off",
-      "keyword-spacing": [
-        "off"
-      ]
+      "capitalized-comments": "off"
     }
   },
   "jest": {
