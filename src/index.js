@@ -14,9 +14,12 @@ export default function promiseMiddleware({ dispatch }) {
           dispatch({ ...action, payload: error, error: true });
 
           const jqueryMajorVersion = window.jQuery?.fn?.jquery.split('.');
-          //jQuery 3 Defered objects are A+ complinent previous versions did not handle throw properly.
-          if(jqueryMajorVersion !== undefined && jqueryMajorVersion < 3)
+          // jQuery 3 Defered objects are A+ complinent previous versions did not handle throw properly.
+          if(jqueryMajorVersion !== undefined && jqueryMajorVersion < 3) {
+            console.warn('Support for jQuerry < 3 is Defered is depreciated. Please upgrade jQuerry.');
+            // eslint-disable-next-line unicorn/no-useless-promise-resolve-reject
             return Promise.reject(error);
+          }
 
           throw error;
         })

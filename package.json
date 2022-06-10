@@ -53,9 +53,17 @@
     "prettier": true,
     "space": true,
     "extends": [
+      "xo/browser",
       "jest-files",
       "unicorn-camelcase"
-    ]
+    ],
+    "rules": {
+      "capitalized-comments": "off",
+      "object-curly-spacing": "off",
+      "keyword-spacing": [
+        "off"
+      ]
+    }
   },
   "jest": {
     "collectCoverage": true,
@@ -69,5 +77,8 @@
     },
     "verbose": true,
     "testURL": "http://localhost/"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
